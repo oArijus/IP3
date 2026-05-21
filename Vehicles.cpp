@@ -1,6 +1,27 @@
 #include "Vehicles.h"
 #include <iostream>
 
+NotImplementedException::NotImplementedException() : std::logic_error("Not implemented yet") {
+}
+
+Car::Car(std::string m, std::string c, double p) : make(m), color(c), price(p) {
+}
+Car::Car(const Car& other) : make(other.make), color(other.color), price(other.price) {
+}
+Car::~Car() = default;
+
+std::string Car::getColor() const { 
+    return color; 
+}
+
+double Car::getPrice() const { 
+    return price; 
+}
+
+std::string Car::getMake() const { 
+    return make; 
+}
+
 FuelCar::FuelCar(std::string m, std::string c, double p) : Car(m, c, p) {
 }
 Car* FuelCar::clone() const {
