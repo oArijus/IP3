@@ -5,8 +5,7 @@
 // Exception thrown when a method is called that has not been implemented yet
 class NotImplementedException : public std::logic_error {
 public:
-    NotImplementedException() : std::logic_error("Not implemented yet") {
-    }
+    NotImplementedException();
 };
 
 // Abstract base class for all vehicles
@@ -16,9 +15,8 @@ protected:
     std::string color;
     double price;
 public:
-    Car(std::string m, std::string c, double p) : make(m), color(c), price(p) {
-    }
-    virtual ~Car() = default;
+    Car(std::string m, std::string c, double p);
+    virtual ~Car();
     
     // Prototype pattern
     virtual Car* clone() const = 0;
@@ -26,15 +24,12 @@ public:
     // Polymorphic method
     virtual void checkStatus() const = 0;
     
-    std::string getColor() const {
-        return color;
-    }
-    double getPrice() const { 
-        return price;
-    }
-    std::string getMake() const { 
-        return make;
-    }
+    Car(const Car& other) = delete;
+    Car& operator=(const Car& other) = delete;
+    
+    std::string getColor() const;
+    double getPrice() const;
+    std::string getMake() const;
 };
 
 class FuelCar : public Car {
