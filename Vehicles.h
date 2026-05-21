@@ -14,6 +14,8 @@ protected:
     std::string make;
     std::string color;
     double price;
+    Car(const Car& other);
+    
 public:
     Car(std::string m, std::string c, double p);
     virtual ~Car();
@@ -24,7 +26,6 @@ public:
     // Polymorphic method
     virtual void checkStatus() const = 0;
     
-    Car(const Car& other) = delete;
     Car& operator=(const Car& other) = delete;
     
     std::string getColor() const;
